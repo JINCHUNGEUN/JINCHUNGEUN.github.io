@@ -1,6 +1,8 @@
 ---
-title: Python logging module
+title: Python's logging module
 date: 2020-03-28 16:46:52
+tags:
+- python
 ---
 
 <em>这篇文章不会详细讲logging的各个功能，详细的可以参考[官方文档](https://docs.python.org/2/howto/logging.html)，官方文档写的已经很详细了，虽然是用英文写的，但是词汇都是简单的词汇。本篇涉及到的内容都是个人认为比较重要的知识点，望不要吐槽~~</em>
@@ -36,4 +38,6 @@ date: 2020-03-28 16:46:52
 - filters：日志筛选
 - formatters：日志格式
 
+### Logging flow
 
+![](./logging/logging-flow.png)

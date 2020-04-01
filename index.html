@@ -151,6 +151,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/30/python-pycache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WALLE">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XXXXXXXXXXXXXXXX">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/30/python-pycache/" class="post-title-link" itemprop="url">Abount python's __pycache__</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-30 09:21:43" itemprop="dateCreated datePublished" datetime="2020-03-30T09:21:43+08:00">2020-03-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-01 10:24:27" itemprop="dateModified" datetime="2020-04-01T10:24:27+08:00">2020-04-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><em>Python Version2.x will have .pyc when interpreter compiles the code. </em><br><em>Python Version3.2 and later will have <strong>pycache</strong> when interpreter compiles the code</em></p>
+<h2 id="So"><a href="#So" class="headerlink" title="So:"></a>So:</h2><ul>
+<li>What is <strong>pycache</strong></li>
+<li>When it is created</li>
+<li>What it is for</li>
+<li>How to ignore it in python project</li>
+</ul>
+<p>I will explain about these questions from what i understand. </p>
+<h3 id="1-What-is-pycache"><a href="#1-What-is-pycache" class="headerlink" title="1. What is pycache"></a>1. What is <strong>pycache</strong></h3><p>When you run run a program in python, the interpreter compiles it to bytecode first and stores it in the <strong>pycache</strong> directory. If you look in there you will find a bunch of files sharing the names of the .py files in your project’s folder.only their extensions will by .pyc or .pyo. These are bytecode-compiled and optimized bytecode-compiled versions of your program’s files.<br>When the project executed again, If the interpreter identifies that the *.py script has not been modifed, it skips the compile step and runs the previously generated *.pyc file stored in the __pycached folder</p>
+<h3 id="2-When-it-is-created"><a href="#2-When-it-is-created" class="headerlink" title="2. When it is created"></a>2. When it is created</h3><p>When a module is imported for the first time(or when the source file has changed since then current compiled file was created). a .pyc file containing the compiled the code should be created in a <code>__pycache__</code> subdirectory of the directory containing .py file.<br>The <code>.pyc</code> file will have a filename that starts with the same name as the <code>.py</code>, and ends with <code>.pyc</code>, with a middle component depends on the particular python binary that created it: <code>module.version.pyc</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import module</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Waht-it-is-for"><a href="#3-Waht-it-is-for" class="headerlink" title="3. Waht it is for"></a>3. Waht it is for</h3><p>All it does is just make your program  start a little faster. When your program change, they will be recompiled, and if you delete the files or the whole folder and run your program again, they will reappear.<br>I don’t recommend deleting these files or suppressing creation during development as it may hurt performance.</p>
+<h3 id="4-How-to-ignore"><a href="#4-How-to-ignore" class="headerlink" title="4. How to ignore"></a>4. How to ignore</h3><p>Just add  code below to .gitignore. It will ignore all files under <strong>pycache</strong> folder recursivly</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**&#x2F;__pycache&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>Ohterwise If you need to ignore a file already under version control. update the the index to ignore changes to files already under version control </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git update-index --assume-unchanged &#123;files&#125;</span><br><span class="line"># or</span><br><span class="line">git rm -r --cached &#123;folder&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>Note: from python3.8 you can use an environment variable to change to location for the annoying cache directories</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/abount-station/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -174,10 +268,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-03-29 20:21:21 / Modified: 21:34:00" itemprop="dateCreated datePublished" datetime="2020-03-29T20:21:21+08:00">2020-03-29</time>
+              <time title="Created: 2020-03-29 20:21:21" itemprop="dateCreated datePublished" datetime="2020-03-29T20:21:21+08:00">2020-03-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-01 10:24:27" itemprop="dateModified" datetime="2020-04-01T10:24:27+08:00">2020-04-01</time>
+              </span>
 
           
 
@@ -251,7 +351,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-29 21:34:00" itemprop="dateModified" datetime="2020-03-29T21:34:00+08:00">2020-03-29</time>
+                <time title="Modified: 2020-04-01 10:24:27" itemprop="dateModified" datetime="2020-04-01T10:24:27+08:00">2020-04-01</time>
               </span>
 
           
@@ -414,9 +514,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
         <span class="site-state-item-count">2</span>
@@ -460,26 +564,6 @@
 
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="Total Visitors">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
 
 
 

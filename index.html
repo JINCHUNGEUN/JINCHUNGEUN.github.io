@@ -160,6 +160,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/13/Apache-License-Version-2-0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WALLE">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XXXXXXXXXXXXXXXX">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/13/Apache-License-Version-2-0/" class="post-title-link" itemprop="url">Apache License Version 2.0</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-13 09:48:25 / Modified: 10:00:26" itemprop="dateCreated datePublished" datetime="2020-04-13T09:48:25+08:00">2020-04-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Apache License是著名的非盈利开源组织Apache采用的协议，用于鼓励代码共享和尊重原作者的著作权，同样允许代码修改，再发布（开源或者商业）。需要满足的条件：</p>
+<ol>
+<li>需要给代码的用户一份Apache License</li>
+<li>如果修改了代码，需要在被修改的文件中说明</li>
+<li>在延伸的代码中（修改和有源代码衍生的代码中）需要带有原来的代码中的协议、商标、专利声明和其他原来作者规定需要包含的说明</li>
+<li>如果再发布的产品中包含一个Notice文件，则在Notice文件中需要带有Apache License。</li>
+</ol>
+<p>使用Apache License 2.0协议的好处</p>
+<ul>
+<li>永久权利，一旦被授权，永久拥有</li>
+<li>全球范围的权利，在一个国家获得授权，适用于所有国家</li>
+<li>授权免费无版税，前期、后期均无任何费用</li>
+<li>授权无排他性，任何人都可以获得授权</li>
+<li>授权不可撤销，一旦获得授权，没有任何人可以取消。</li>
+</ul>
+<p>样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"># Copyright 2014-present MongoDB, Inc.</span><br><span class="line">#</span><br><span class="line"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you</span><br><span class="line"># may not use this file except in compliance with the License.  You</span><br><span class="line"># may obtain a copy of the License at</span><br><span class="line">#</span><br><span class="line"># http:&#x2F;&#x2F;www.apache.org&#x2F;licenses&#x2F;LICENSE-2.0</span><br><span class="line">#</span><br><span class="line"># Unless required by applicable law or agreed to in writing, software</span><br><span class="line"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or</span><br><span class="line"># implied.  See the License for the specific language governing</span><br><span class="line"># permissions and limitations under the License.</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;Class to monitor a MongoDB server on a background thread.&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">import weakref</span><br><span class="line"></span><br><span class="line">from pymongo import common, periodic_executor</span><br><span class="line">from pymongo.errors import OperationFailure</span><br><span class="line">from pymongo.monotonic import time as _time</span><br><span class="line">from pymongo.read_preferences import MovingAverage</span><br><span class="line">from pymongo.server_description import ServerDescription</span><br><span class="line">from pymongo.server_type import SERVER_TYPE</span><br><span class="line">from pymongo.srv_resolver import _SrvResolver</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MonitorBase(object):</span><br><span class="line">    def __init__(self, *args, **kwargs):</span><br><span class="line">        &quot;&quot;&quot;Override this method to create an executor.&quot;&quot;&quot;</span><br><span class="line">        raise NotImplementedError</span><br><span class="line"></span><br><span class="line">    def open(self):</span><br><span class="line">        &quot;&quot;&quot;Start monitoring, or restart after a fork.</span><br><span class="line"></span><br><span class="line">        Multiple calls have no effect.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self._executor.open()</span><br><span class="line"></span><br><span class="line">    def close(self):</span><br><span class="line">        &quot;&quot;&quot;Close and stop monitoring.</span><br><span class="line"></span><br><span class="line">        open() restarts the monitor after closing.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self._executor.close()</span><br><span class="line"></span><br><span class="line">    def join(self, timeout&#x3D;None):</span><br><span class="line">        &quot;&quot;&quot;Wait for the monitor to stop.&quot;&quot;&quot;</span><br><span class="line">        self._executor.join(timeout)</span><br><span class="line"></span><br><span class="line">    def request_check(self):</span><br><span class="line">        &quot;&quot;&quot;If the monitor is sleeping, wake it soon.&quot;&quot;&quot;</span><br><span class="line">        self._executor.wake()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/%E5%BE%AE%E4%BF%A1%E9%80%80%E6%AC%BE%E9%80%9A%E7%9F%A5%E8%A7%A3%E5%AF%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -191,7 +265,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-05 22:09:46" itemprop="dateModified" datetime="2020-04-05T22:09:46+08:00">2020-04-05</time>
+                <time title="Modified: 2020-04-13 10:00:26" itemprop="dateModified" datetime="2020-04-13T10:00:26+08:00">2020-04-13</time>
               </span>
 
           
@@ -274,7 +348,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-05 22:09:46" itemprop="dateModified" datetime="2020-04-05T22:09:46+08:00">2020-04-05</time>
+                <time title="Modified: 2020-04-13 10:00:26" itemprop="dateModified" datetime="2020-04-13T10:00:26+08:00">2020-04-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -368,7 +442,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-05 22:09:46" itemprop="dateModified" datetime="2020-04-05T22:09:46+08:00">2020-04-05</time>
+                <time title="Modified: 2020-04-13 10:00:26" itemprop="dateModified" datetime="2020-04-13T10:00:26+08:00">2020-04-13</time>
               </span>
 
           
@@ -443,7 +517,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-05 22:09:46" itemprop="dateModified" datetime="2020-04-05T22:09:46+08:00">2020-04-05</time>
+                <time title="Modified: 2020-04-13 10:00:26" itemprop="dateModified" datetime="2020-04-13T10:00:26+08:00">2020-04-13</time>
               </span>
 
           
@@ -606,7 +680,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
